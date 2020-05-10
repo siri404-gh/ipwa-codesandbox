@@ -1,0 +1,56 @@
+{
+  "name": "ipwa-core",
+  "version": "1.0.0",
+  "description": "Node.js example server starter project",
+  "main": "src/server/index.js",
+  "author": "Sreeram Padmanabhan",
+  "license": "ISC",
+  "scripts": {
+    "start": "npm run build:prod && cd dist && nodemon .",
+    "build": "webpack --config=node_modules/@jsdrome/webpack-config",
+    "build:client:dev": "npm run build -- --env=client/web/dev",
+    "build:client:dev:watch": "npm run build:client:dev -- --watch",
+    "build:client:devserver": "webpack-dev-server --config=node_modules/@jsdrome/webpack-config --env=client/web/dev",
+    "build:client:prod": "npm run build -- --env=client/web/prod",
+    "build:client:prod:watch": "npm run build:client:prod -- --watch",
+    "build:server:dev": "npm run build -- --env=server/dev",
+    "build:server:dev:watch": "npm run build:server:dev -- --watch",
+    "build:server:prod": "npm run build -- --env=server/prod",
+    "build:server:prod:watch": "npm run build:server:prod -- --watch",
+    "build:server:firebase": "npm run build -- --env=server/firebase",
+    "build:dev": "concurrently --kill-others \"npm run build:client:dev:watch\" \"npm run build:server:dev:watch\" -n client,server -c blue,yellow",
+    "build:prod": "concurrently --kill-others \"npm run build:client:prod:watch\" \"npm run build:server:prod:watch\" -n client,server -c blue,yellow"
+  },
+  "dependencies": {
+    "@jsdrome/babel-preset-jsdrome": "1.3.0",
+    "@jsdrome/components": "1.2.0",
+    "@jsdrome/utils": "1.2.0",
+    "@jsdrome/webpack-config": "1.3.0",
+    "axios": "0.19.2",
+    "cookie-parser": "1.4.5",
+    "express": "4.17.1",
+    "md5": "2.2.1",
+    "morgan": "1.10.0",
+    "object-path-immutable": "3.1.1",
+    "rc": "1.2.8",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-helmet": "5.2.1",
+    "react-redux": "7.2.0",
+    "react-router-dom": "5.1.2",
+    "redux": "4.0.5",
+    "redux-thunk": "2.3.0"
+  },
+  "devDependencies": {
+    "concurrently": "5.2.0",
+    "nodemon": "1.18.4"
+  },
+  "keywords": [
+    "pwa",
+    "ipwa",
+    "isomorphic",
+    "universal web app",
+    "ssr",
+    "serverside rendering"
+  ]
+}
